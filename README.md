@@ -22,4 +22,4 @@ name = "auryn"
 scope = "source.auryn"
 ```
 
-To actually perform syntax highlighting, helix also needs the queries file. Copy `queries/highlights.scm` to `<helix-runtime>/queries/auryn/highlights.scm`.
+To actually perform syntax highlighting, helix also needs the queries files. Copy `queries/*` to `<helix-runtime>/queries/auryn/*`.
