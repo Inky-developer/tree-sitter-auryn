@@ -1,0 +1,147 @@
+================================================================================
+Simple function
+================================================================================
+
+fn main() {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block)))
+
+================================================================================
+Function with parameters and return type
+================================================================================
+
+fn add(a: I32, b: I32) -> I32 {
+  return a + b
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (named_type
+          (identifier)))
+      (parameter
+        name: (identifier)
+        type: (named_type
+          (identifier))))
+    (return_type
+      type: (named_type
+        (identifier)))
+    (block
+      (return_statement
+        (binary_expression
+          left: (identifier)
+          right: (identifier))))))
+
+================================================================================
+Struct definition
+================================================================================
+
+struct Point {
+  x: I32,
+  y: I32
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_definition
+    name: (identifier)
+    (struct_body
+      (struct_field
+        name: (identifier)
+        type: (named_type
+          (identifier)))
+      (struct_field
+        name: (identifier)
+        type: (named_type
+          (identifier))))))
+
+================================================================================
+Type alias with named type
+================================================================================
+
+type MyInt = I32
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (type_alias
+    name: (identifier)
+    type: (named_type
+      (identifier))))
+
+================================================================================
+Type alias with structural type
+================================================================================
+
+type Range = { low: I64, high: I64 }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (type_alias
+    name: (identifier)
+    type: (structural_type
+      (structural_type_field
+        name: (identifier)
+        type: (named_type
+          (identifier)))
+      (structural_type_field
+        name: (identifier)
+        type: (named_type
+          (identifier))))))
+
+================================================================================
+Extern block
+================================================================================
+
+unsafe extern "java" {
+  ["java/io/PrintStream"]
+  type PrintStream {
+    ["println"]
+    fn printString(string: String)
+
+    ["out"]
+    static let out: PrintStream
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (extern_block
+    language: (string_literal)
+    (extern_item
+      (item_metadata
+        (string_literal))
+      (extern_type
+        name: (identifier)
+        (extern_type_body_item
+          (item_metadata
+            (string_literal))
+          (extern_function
+            name: (identifier)
+            (parameter_list
+              (parameter
+                name: (identifier)
+                type: (named_type
+                  (identifier))))))
+        (extern_type_body_item
+          (item_metadata
+            (string_literal))
+          (extern_static_let
+            name: (identifier)
+            type: (named_type
+              (identifier))))))))

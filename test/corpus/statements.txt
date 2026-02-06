@@ -1,0 +1,322 @@
+================================================================================
+Let statement without type
+================================================================================
+
+fn main() {
+  let x = 42
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (let_statement
+        name: (identifier)
+        value: (number_literal)))))
+
+================================================================================
+Let statement with type
+================================================================================
+
+fn main() {
+  let x: I32 = 42
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (let_statement
+        name: (identifier)
+        type: (named_type
+          (identifier))
+        value: (number_literal)))))
+
+================================================================================
+If statement
+================================================================================
+
+fn main() {
+  if x > 0 {
+    print(x)
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        condition: (binary_expression
+          left: (identifier)
+          right: (number_literal))
+        consequence: (block
+          (call_expression
+            function: (identifier)
+            (argument_list
+              (identifier))))))))
+
+================================================================================
+If-else statement
+================================================================================
+
+fn main() {
+  if a == b {
+    print(1)
+  } else {
+    print(2)
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        condition: (binary_expression
+          left: (identifier)
+          right: (identifier))
+        consequence: (block
+          (call_expression
+            function: (identifier)
+            (argument_list
+              (number_literal))))
+        (else_clause
+          (block
+            (call_expression
+              function: (identifier)
+              (argument_list
+                (number_literal)))))))))
+
+================================================================================
+If-else if chain
+================================================================================
+
+fn main() {
+  if a > 0 {
+    print(1)
+  } else if a < 0 {
+    print(2)
+  } else {
+    print(3)
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        condition: (binary_expression
+          left: (identifier)
+          right: (number_literal))
+        consequence: (block
+          (call_expression
+            function: (identifier)
+            (argument_list
+              (number_literal))))
+        (else_clause
+          (if_statement
+            condition: (binary_expression
+              left: (identifier)
+              right: (number_literal))
+            consequence: (block
+              (call_expression
+                function: (identifier)
+                (argument_list
+                  (number_literal))))
+            (else_clause
+              (block
+                (call_expression
+                  function: (identifier)
+                  (argument_list
+                    (number_literal)))))))))))
+
+================================================================================
+Loop statement
+================================================================================
+
+fn main() {
+  loop {
+    break
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (loop_statement
+        (block
+          (break_statement))))))
+
+================================================================================
+While statement
+================================================================================
+
+fn main() {
+  while x > 0 {
+    x -= 1
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (while_statement
+        condition: (binary_expression
+          left: (identifier)
+          right: (number_literal))
+        (block
+          (update_statement
+            target: (identifier)
+            operator: (update_operator)
+            value: (number_literal)))))))
+
+================================================================================
+Return statement with value
+================================================================================
+
+fn foo() -> I32 {
+  return 42
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (return_type
+      type: (named_type
+        (identifier)))
+    (block
+      (return_statement
+        (number_literal)))))
+
+================================================================================
+Return statement without value
+================================================================================
+
+fn foo() {
+  return
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (return_statement))))
+
+================================================================================
+Continue statement
+================================================================================
+
+fn main() {
+  loop {
+    continue
+  }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (loop_statement
+        (block
+          (continue_statement))))))
+
+================================================================================
+Update statements
+================================================================================
+
+fn main() {
+  x = 1
+  x += 2
+  x -= 3
+  x *= 4
+  x /= 5
+  x %= 6
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal))
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal))
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal))
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal))
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal))
+      (update_statement
+        target: (identifier)
+        operator: (update_operator)
+        value: (number_literal)))))
+
+================================================================================
+Field update
+================================================================================
+
+fn main() {
+  obj.field = 42
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (update_statement
+        target: (field_expression
+          object: (identifier)
+          field: (identifier))
+        operator: (update_operator)
+        value: (number_literal)))))

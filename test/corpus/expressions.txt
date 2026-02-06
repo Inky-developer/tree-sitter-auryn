@@ -1,0 +1,288 @@
+================================================================================
+Binary expression precedence
+================================================================================
+
+fn main() {
+  1 + 2 * 3
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (binary_expression
+        left: (number_literal)
+        right: (binary_expression
+          left: (number_literal)
+          right: (number_literal))))))
+
+================================================================================
+Logical operators
+================================================================================
+
+fn main() {
+  a and b or c
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          right: (identifier))
+        right: (identifier)))))
+
+================================================================================
+Not expression
+================================================================================
+
+fn main() {
+  not true
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (unary_expression
+        operand: (boolean_literal)))))
+
+================================================================================
+Call expression
+================================================================================
+
+fn main() {
+  print(42)
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (call_expression
+        function: (identifier)
+        (argument_list
+          (number_literal))))))
+
+================================================================================
+Call with multiple arguments
+================================================================================
+
+fn main() {
+  add(1, 2, 3)
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (call_expression
+        function: (identifier)
+        (argument_list
+          (number_literal)
+          (number_literal)
+          (number_literal))))))
+
+================================================================================
+Field access
+================================================================================
+
+fn main() {
+  obj.field
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (field_expression
+        object: (identifier)
+        field: (identifier)))))
+
+================================================================================
+Chained field access and calls
+================================================================================
+
+fn main() {
+  System.out.printString("hello")
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (call_expression
+        function: (field_expression
+          object: (field_expression
+            object: (identifier)
+            field: (identifier))
+          field: (identifier))
+        (argument_list
+          (string_literal))))))
+
+================================================================================
+Named struct literal
+================================================================================
+
+fn main() {
+  Point { x: 1, y: 2 }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (struct_literal
+        name: (identifier)
+        (struct_literal_field
+          name: (identifier)
+          value: (number_literal))
+        (struct_literal_field
+          name: (identifier)
+          value: (number_literal))))))
+
+================================================================================
+Anonymous struct literal
+================================================================================
+
+fn main() {
+  { low: 5, high: 10 }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (struct_literal
+        (struct_literal_field
+          name: (identifier)
+          value: (number_literal))
+        (struct_literal_field
+          name: (identifier)
+          value: (number_literal))))))
+
+================================================================================
+Parenthesized expression
+================================================================================
+
+fn main() {
+  (1 + 2) * 3
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (binary_expression
+        left: (parenthesized_expression
+          (binary_expression
+            left: (number_literal)
+            right: (number_literal)))
+        right: (number_literal)))))
+
+================================================================================
+Boolean literals
+================================================================================
+
+fn main() {
+  true
+  false
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (boolean_literal)
+      (boolean_literal))))
+
+================================================================================
+String literal
+================================================================================
+
+fn main() {
+  "hello world"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (string_literal))))
+
+================================================================================
+Comparison operators
+================================================================================
+
+fn main() {
+  a == b
+  a != b
+  a > b
+  a >= b
+  a < b
+  a <= b
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (binary_expression
+        left: (identifier)
+        right: (identifier))
+      (binary_expression
+        left: (identifier)
+        right: (identifier))
+      (binary_expression
+        left: (identifier)
+        right: (identifier))
+      (binary_expression
+        left: (identifier)
+        right: (identifier))
+      (binary_expression
+        left: (identifier)
+        right: (identifier))
+      (binary_expression
+        left: (identifier)
+        right: (identifier)))))

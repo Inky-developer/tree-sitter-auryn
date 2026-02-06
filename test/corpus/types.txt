@@ -1,0 +1,91 @@
+================================================================================
+Array type
+================================================================================
+
+fn foo(a: []I32) {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (array_type
+          (named_type
+            (identifier)))))
+    (block)))
+
+================================================================================
+Unit return type
+================================================================================
+
+fn foo() -> () {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (return_type
+      type: (unit_type))
+    (block)))
+
+================================================================================
+Structural type in let
+================================================================================
+
+fn main() {
+  let p: { x: I32, y: I32 } = { x: 1, y: 2 }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    (block
+      (let_statement
+        name: (identifier)
+        type: (structural_type
+          (structural_type_field
+            name: (identifier)
+            type: (named_type
+              (identifier)))
+          (structural_type_field
+            name: (identifier)
+            type: (named_type
+              (identifier))))
+        value: (struct_literal
+          (struct_literal_field
+            name: (identifier)
+            value: (number_literal))
+          (struct_literal_field
+            name: (identifier)
+            value: (number_literal)))))))
+
+================================================================================
+Array of array type
+================================================================================
+
+fn foo(a: [][]I32) {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (array_type
+          (array_type
+            (named_type
+              (identifier))))))
+    (block)))
