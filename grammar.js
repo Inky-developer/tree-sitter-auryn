@@ -44,10 +44,17 @@ export default grammar({
       seq(
         "fn",
         field("name", $.identifier),
+        optional($.generic_parameter_list),
         $.parameter_list,
         optional($.return_type),
         $.block,
       ),
+
+    generic_parameter_list: ($) =>
+      seq("[", optional(comma_separated1($.generic_parameter_definition)), "]"),
+
+    generic_parameter_definition: ($) =>
+      field("name", $.identifier),
 
     struct_definition: ($) =>
       seq(

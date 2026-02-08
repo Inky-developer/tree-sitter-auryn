@@ -38,6 +38,7 @@
 (type_alias name: (identifier) @type)
 (extern_type name: (identifier) @type)
 (struct_literal name: (identifier) @type)
+(generic_parameter_definition name: (identifier) @type)
 
 ; Parameters
 (parameter name: (identifier) @variable.parameter)

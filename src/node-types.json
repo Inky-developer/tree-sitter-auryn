@@ -650,11 +650,46 @@
           "named": true
         },
         {
+          "type": "generic_parameter_list",
+          "named": true
+        },
+        {
           "type": "parameter_list",
           "named": true
         },
         {
           "type": "return_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "generic_parameter_definition",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "generic_parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "generic_parameter_definition",
           "named": true
         }
       ]

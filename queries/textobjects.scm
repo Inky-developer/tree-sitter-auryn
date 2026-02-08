@@ -29,6 +29,14 @@
   (_) @parameter.inside)
 @parameter.around
 
+(generic_parameter_definition) @parameter.inside
+
+(generic_parameter_list
+  "," @_delimiter
+  .
+  (generic_parameter_definition) @parameter.inside)
+@parameter.around
+
 ; Comments
 (comment) @comment.inside
 (comment) @comment.around
