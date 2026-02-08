@@ -11,7 +11,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block)))
+    body: (block)))
 
 ================================================================================
 Function with parameters and return type
@@ -38,7 +38,7 @@ fn add(a: I32, b: I32) -> I32 {
     (return_type
       type: (named_type
         (identifier)))
-    (block
+    body: (block
       (return_statement
         (binary_expression
           left: (identifier)
@@ -68,7 +68,7 @@ fn id[T](value: T) -> T {
     (return_type
       type: (named_type
         (identifier)))
-    (block
+    body: (block
       (return_statement
         (identifier)))))
 
@@ -90,7 +90,7 @@ fn foo[T, U]() {
       (generic_parameter_definition
         name: (identifier)))
     (parameter_list)
-    (block)))
+    body: (block)))
 
 ================================================================================
 Function with empty generic parameter list
@@ -106,7 +106,7 @@ fn foo[]() {
     name: (identifier)
     (generic_parameter_list)
     (parameter_list)
-    (block)))
+    body: (block)))
 
 ================================================================================
 Struct definition
@@ -122,7 +122,7 @@ struct Point {
 (source_file
   (struct_definition
     name: (identifier)
-    (struct_body
+    body: (struct_body
       (struct_field
         name: (identifier)
         type: (named_type
@@ -192,7 +192,7 @@ unsafe extern "java" {
         (string_literal))
       (extern_type
         name: (identifier)
-        (extern_type_body_item
+        body: (extern_type_body_item
           (item_metadata
             (string_literal))
           (extern_function
@@ -202,7 +202,7 @@ unsafe extern "java" {
                 name: (identifier)
                 type: (named_type
                   (identifier))))))
-        (extern_type_body_item
+        body: (extern_type_body_item
           (item_metadata
             (string_literal))
           (extern_static_let

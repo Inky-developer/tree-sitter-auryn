@@ -47,7 +47,7 @@ export default grammar({
         optional($.generic_parameter_list),
         $.parameter_list,
         optional($.return_type),
-        $.block,
+        field("body", $.block),
       ),
 
     generic_parameter_list: ($) =>
@@ -61,7 +61,7 @@ export default grammar({
         "struct",
         field("name", $.identifier),
         "{",
-        optional($.struct_body),
+        optional(field("body", $.struct_body)),
         "}",
       ),
 
@@ -90,7 +90,7 @@ export default grammar({
         "type",
         field("name", $.identifier),
         "{",
-        repeat($.extern_type_body_item),
+        repeat(field("body", $.extern_type_body_item)),
         "}",
       ),
 

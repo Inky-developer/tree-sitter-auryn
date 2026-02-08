@@ -12,7 +12,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (let_statement
         name: (identifier)
         value: (number_literal)))))
@@ -31,7 +31,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (let_statement
         name: (identifier)
         type: (named_type
@@ -54,7 +54,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (if_statement
         condition: (binary_expression
           left: (identifier)
@@ -83,7 +83,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (if_statement
         condition: (binary_expression
           left: (identifier)
@@ -120,7 +120,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (if_statement
         condition: (binary_expression
           left: (identifier)
@@ -163,7 +163,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (loop_statement
         (block
           (break_statement))))))
@@ -184,7 +184,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (while_statement
         condition: (binary_expression
           left: (identifier)
@@ -212,7 +212,7 @@ fn foo() -> I32 {
     (return_type
       type: (named_type
         (identifier)))
-    (block
+    body: (block
       (return_statement
         (number_literal)))))
 
@@ -230,7 +230,7 @@ fn foo() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (return_statement))))
 
 ================================================================================
@@ -249,7 +249,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (loop_statement
         (block
           (continue_statement))))))
@@ -273,7 +273,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (update_statement
         target: (identifier)
         operator: (update_operator)
@@ -313,7 +313,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (update_statement
         target: (field_expression
           object: (identifier)

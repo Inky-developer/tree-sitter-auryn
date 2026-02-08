@@ -16,7 +16,7 @@ fn foo(a: []I32) {
         type: (array_type
           (named_type
             (identifier)))))
-    (block)))
+    body: (block)))
 
 ================================================================================
 Unit return type
@@ -33,7 +33,7 @@ fn foo() -> () {
     (parameter_list)
     (return_type
       type: (unit_type))
-    (block)))
+    body: (block)))
 
 ================================================================================
 Structural type in let
@@ -49,7 +49,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (let_statement
         name: (identifier)
         type: (structural_type
@@ -88,4 +88,4 @@ fn foo(a: [][]I32) {
           (array_type
             (named_type
               (identifier))))))
-    (block)))
+    body: (block)))

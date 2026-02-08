@@ -12,7 +12,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (binary_expression
         left: (number_literal)
         right: (binary_expression
@@ -33,7 +33,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (binary_expression
         left: (binary_expression
           left: (identifier)
@@ -54,7 +54,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (unary_expression
         operand: (boolean_literal)))))
 
@@ -72,7 +72,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (call_expression
         function: (identifier)
         (argument_list
@@ -92,7 +92,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (call_expression
         function: (identifier)
         (argument_list
@@ -114,7 +114,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (field_expression
         object: (identifier)
         field: (identifier)))))
@@ -133,7 +133,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (call_expression
         function: (field_expression
           object: (field_expression
@@ -157,7 +157,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (struct_literal
         name: (identifier)
         (struct_literal_field
@@ -181,7 +181,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (struct_literal
         (struct_literal_field
           name: (identifier)
@@ -204,7 +204,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (binary_expression
         left: (parenthesized_expression
           (binary_expression
@@ -227,7 +227,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (boolean_literal)
       (boolean_literal))))
 
@@ -245,7 +245,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (string_literal))))
 
 ================================================================================
@@ -267,7 +267,7 @@ fn main() {
   (function_definition
     name: (identifier)
     (parameter_list)
-    (block
+    body: (block
       (binary_expression
         left: (identifier)
         right: (identifier))

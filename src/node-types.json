@@ -519,6 +519,16 @@
     "type": "extern_type",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "extern_type_body_item",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -529,16 +539,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "extern_type_body_item",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -630,6 +630,16 @@
     "type": "function_definition",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -645,10 +655,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "block",
-          "named": true
-        },
         {
           "type": "generic_parameter_list",
           "named": true
@@ -1126,6 +1132,16 @@
     "type": "struct_definition",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "struct_body",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1136,16 +1152,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "struct_body",
-          "named": true
-        }
-      ]
     }
   },
   {
