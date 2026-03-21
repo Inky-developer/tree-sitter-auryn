@@ -25,7 +25,7 @@ export default grammar({
 
   word: ($) => $.identifier,
 
-  conflicts: ($) => [[$._expression, $.struct_literal]],
+  conflicts: ($) => [[$._expression, $.struct_literal], [$.named_type]],
 
   rules: {
     source_file: ($) => repeat($._item),
@@ -43,12 +43,15 @@ export default grammar({
     function_definition: ($) =>
       seq(
         "fn",
+        optional(field("receiver", $.receiver)),
         field("name", $.identifier),
         optional($.generic_parameter_list),
         $.parameter_list,
         optional($.return_type),
         field("body", $.block),
       ),
+
+    receiver: ($) => seq("(", field("type", $._type), ")"),
 
     generic_parameter_list: ($) =>
       seq("[", optional(comma_separated1($.generic_parameter_definition)), "]"),
@@ -60,6 +63,7 @@ export default grammar({
       seq(
         "struct",
         field("name", $.identifier),
+        optional($.generic_parameter_list),
         "{",
         optional(field("body", $.struct_body)),
         "}",
@@ -122,7 +126,22 @@ export default grammar({
 
     // --- Parameters and return types ---
 
-    parameter_list: ($) => seq("(", optional(comma_separated1($.parameter)), ")"),
+    parameter_list: ($) =>
+      seq(
+        "(",
+        optional(
+          seq(
+            choice(
+              seq($.self_parameter, optional(seq(",", comma_separated1($.parameter)))),
+              comma_separated1($.parameter),
+            ),
+            optional(","),
+          ),
+        ),
+        ")",
+      ),
+
+    self_parameter: (_$) => "self",
 
     parameter: ($) =>
       seq(field("name", $.identifier), ":", field("type", $._type)),
@@ -134,7 +153,13 @@ export default grammar({
     _type: ($) =>
       choice($.named_type, $.array_type, $.structural_type, $.unit_type),
 
-    named_type: ($) => $.identifier,
+    named_type: ($) =>
+      seq($.type_path, optional($.type_argument_list)),
+
+    type_path: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
+
+    type_argument_list: ($) =>
+      seq("[", comma_separated1($._type), "]"),
 
     array_type: ($) => seq("[", "]", $._type),
 

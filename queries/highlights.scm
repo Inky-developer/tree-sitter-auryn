@@ -33,7 +33,7 @@
 (call_expression function: (identifier) @function.call)
 
 ; Types
-(named_type (identifier) @type)
+(type_path (identifier) @type)
 (struct_definition name: (identifier) @type)
 (type_alias name: (identifier) @type)
 (extern_type name: (identifier) @type)
@@ -41,6 +41,7 @@
 (generic_parameter_definition name: (identifier) @type)
 
 ; Parameters
+(self_parameter) @variable.builtin
 (parameter name: (identifier) @variable.parameter)
 
 ; Fields / properties

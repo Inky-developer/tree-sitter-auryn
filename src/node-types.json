@@ -649,6 +649,16 @@
             "named": true
           }
         ]
+      },
+      "receiver": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "receiver",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
@@ -892,11 +902,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "type_argument_list",
+          "named": true
+        },
+        {
+          "type": "type_path",
           "named": true
         }
       ]
@@ -951,6 +965,10 @@
         {
           "type": "parameter",
           "named": true
+        },
+        {
+          "type": "self_parameter",
+          "named": true
         }
       ]
     }
@@ -1004,6 +1022,34 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "receiver",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array_type",
+            "named": true
+          },
+          {
+            "type": "named_type",
+            "named": true
+          },
+          {
+            "type": "structural_type",
+            "named": true
+          },
+          {
+            "type": "unit_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1152,6 +1198,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "generic_parameter_list",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1369,6 +1425,48 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "type_argument_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "named_type",
+          "named": true
+        },
+        {
+          "type": "structural_type",
+          "named": true
+        },
+        {
+          "type": "unit_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1767,6 +1865,10 @@
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "self_parameter",
+    "named": true
   },
   {
     "type": "static",

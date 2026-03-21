@@ -18,6 +18,25 @@ fn main() {
         value: (number_literal)))))
 
 ================================================================================
+Let self as variable name
+================================================================================
+
+fn main() {
+  let self = 42
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    (parameter_list)
+    body: (block
+      (let_statement
+        name: (identifier)
+        value: (number_literal)))))
+
+================================================================================
 Let statement with type
 ================================================================================
 
@@ -35,7 +54,8 @@ fn main() {
       (let_statement
         name: (identifier)
         type: (named_type
-          (identifier))
+          (type_path
+            (identifier)))
         value: (number_literal)))))
 
 ================================================================================
@@ -211,7 +231,8 @@ fn foo() -> I32 {
     (parameter_list)
     (return_type
       type: (named_type
-        (identifier)))
+        (type_path
+          (identifier))))
     body: (block
       (return_statement
         (number_literal)))))

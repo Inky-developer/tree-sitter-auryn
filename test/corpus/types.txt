@@ -15,7 +15,8 @@ fn foo(a: []I32) {
         name: (identifier)
         type: (array_type
           (named_type
-            (identifier)))))
+            (type_path
+              (identifier))))))
     body: (block)))
 
 ================================================================================
@@ -56,11 +57,13 @@ fn main() {
           (structural_type_field
             name: (identifier)
             type: (named_type
-              (identifier)))
+              (type_path
+                (identifier))))
           (structural_type_field
             name: (identifier)
             type: (named_type
-              (identifier))))
+              (type_path
+                (identifier)))))
         value: (struct_literal
           (struct_literal_field
             name: (identifier)
@@ -68,6 +71,50 @@ fn main() {
           (struct_literal_field
             name: (identifier)
             value: (number_literal)))))))
+
+================================================================================
+Type with type arguments
+================================================================================
+
+type Foo = []Bar[I32]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (type_alias
+    name: (identifier)
+    type: (array_type
+      (named_type
+        (type_path
+          (identifier))
+        (type_argument_list
+          (named_type
+            (type_path
+              (identifier))))))))
+
+================================================================================
+Path type with type arguments
+================================================================================
+
+type Foo = Foo.Bar.Baz[Y, Z]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (type_alias
+    name: (identifier)
+    type: (named_type
+      (type_path
+        (identifier)
+        (identifier)
+        (identifier))
+      (type_argument_list
+        (named_type
+          (type_path
+            (identifier)))
+        (named_type
+          (type_path
+            (identifier)))))))
 
 ================================================================================
 Array of array type
@@ -87,5 +134,6 @@ fn foo(a: [][]I32) {
         type: (array_type
           (array_type
             (named_type
-              (identifier))))))
+              (type_path
+                (identifier)))))))
     body: (block)))

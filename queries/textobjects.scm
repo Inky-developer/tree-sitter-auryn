@@ -12,6 +12,8 @@
   body: (extern_type_body_item) @class.inside) @class.around
 
 ; Parameters
+(self_parameter) @parameter.inside
+
 (parameter) @parameter.inside
 
 (argument_list
